@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For You ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      background: #110515;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      text-align: center;
+    }
+    .container { width: 85%; max-width: 400px; }
+    .progress-box {
+      border: 1px solid #ff4d6d;
+      border-radius: 20px;
+      padding: 3px;
+      margin-top: 20px;
+      display: none;
+    }
+    .progress-bar {
+      height: 12px;
+      width: 0%;
+      background: linear-gradient(90deg, #ff4d6d, #ff758f);
+      border-radius: 15px;
+      transition: width 0.1s linear;
+    }
+    .letter-card {
+      display: none;
+      background: #ffffff;
+      color: #2b2b2b;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(255, 77, 109, 0.4);
+      max-width: 360px;
+      width: 85%;
+      animation: fadeIn 1s ease-in-out;
+      line-height: 1.6;
+    }
+    .letter-card p {
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+    .btn {
+      margin-top: 15px;
+      padding: 12px 30px;
+      background: #ff4d6d;
+      border: none;
+      color: white;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="main-box">
+    <h1 id="status-text" style="font-size: 70px; font-weight: bold;">3</h1>
+    <div class="progress-box" id="p-box">
+      <div class="progress-bar" id="p-bar"></div>
+    </div>
+    <p id="percentage-text" style="margin-top: 10px; font-weight: bold;"></p>
+  </div>
+
+  <div class="letter-card" id="letter">
+    <h2 style="color:#ff4d6d; margin-top:0;">For You ❤️</h2>
+    
+    <p>Aapko pta h hum aapko jb pehli baar dekhe hum aapke piche diwane hogye. Hum aapko bht pasand krte h, aap bht khubsurat h aur aapke jaisa koi ni h!</p>
+    
+    <p>Aap meri first love h!! Hum aapko bht chate h siddhat se, hum aapko hamesha khush rakhna chate h or hum aapke saath apni sari zindagi bitana chate h.</p>
+    
+    <p>Hum aapko bht pyar krte h, I like you so much! Aapka sb chiz humko bht pasand h. Aap bht time se meri crush thi or ab wo samay aagya ki hum apni saari feelings btade...</p>
+    
+    <h3 style="color:#ff4d6d; margin-bottom: 5px;">I lovee you so much!! ❤️✨</h3>
+    
+    <button class="btn" onclick="alert('❤️')">Forever Yours ❤️</button>
+  </div>
+
+  <script>
+    let count = 3;
+    const statusText = document.getElementById('status-text');
+    const pBox = document.getElementById('p-box');
+    const pBar = document.getElementById('p-bar');
+    const pText = document.getElementById('percentage-text');
+    const mainBox = document.getElementById('main-box');
+    const letter = document.getElementById('letter');
+
+    // Countdown
+    let timer = setInterval(() => {
+      count--;
+      if(count > 0) {
+        statusText.innerText = count;
+      } else {
+        clearInterval(timer);
+        startLoading();
+      }
+    }, 1000);
+
+    // Progress Loading
+    function startLoading() {
+      statusText.style.fontSize = "22px";
+      statusText.innerText = "Initializing Love.exe...";
+      pBox.style.display = "block";
+      let progress = 0;
+      
+      let loadInterval = setInterval(() => {
+        progress++;
+        pBar.style.width = progress + "%";
+        pText.innerText = progress + "%";
+
+        if(progress === 50) statusText.innerText = "Searching for the prettiest smile...";
+        if(progress === 90) statusText.innerText = "Found 1 Result ❤️️";
+
+        if(progress >= 100) {
+          clearInterval(loadInterval);
+          setTimeout(() => {
+            mainBox.style.display = "none";
+            letter.style.display = "block";
+          }, 600);
+        }
+      }, 40);
+    }
+  </script>
+</body>
+</html>
